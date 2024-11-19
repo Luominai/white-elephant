@@ -5,7 +5,6 @@ import { randomCard, effectMap } from './Cards';
 export const WhiteElephant = {
     setup: ({ctx}) => ({ 
         gifts: setupGifts(ctx.numPlayers),
-        giftsRemaining: ctx.numPlayers,
         players: setupHands(ctx.numPlayers)
     }),
 
@@ -35,7 +34,7 @@ export const WhiteElephant = {
                 stealGift: stealGift
             },
             start: true,
-            endIf: ({ G }) => (G.giftsRemaining === 0),
+            endIf: ({ G }) => (G.gifts.reduce((endGame, curr) => {if (curr.owner === null) {endGame = false}}, true)),
             next: 'end',
         },
         end: {
@@ -71,5 +70,6 @@ function playCard({ G, playerID, events}, indexOfCard, indexOfGift = null) {
 
 function stealGift({G, playerID, events}, indexOfGift) {
     G.gifts[indexOfGift].owner = playerID
+    G.gifts[indexOfGift].revealed = true
     events.endTurn()
 }
