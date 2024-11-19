@@ -7,20 +7,27 @@ export function WhiteElephantBoard({ ctx, G, moves }) {
     return (
         <>
         <div style={{
+            height: "100vh",
             display: "flex",
-            flexWrap: "wrap",
-            gap: "10px",
-            alignItems: "center"
+            alignItems: "start"
         }}>
-            {G.gifts.map((gift, index) => {
-                return (
-                    <div style={{cursor: "pointer"}} onClick={() => {
-                        moves.stealGift(index)
-                    }}>
-                        {Gift({gift: gift})}
-                    </div>
-                )
-            })}
+            <div style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "5px",
+                alignItems: "center",
+                justifyContent: "center",
+            }}>
+                {G.gifts.map((gift, index) => {
+                    return (
+                        <div style={{cursor: "pointer"}} onClick={() => {
+                            moves.stealGift(index)
+                        }}>
+                            {Gift({gift: gift})}
+                        </div>
+                    )
+                })}
+            </div>
         </div>
         </>
     )

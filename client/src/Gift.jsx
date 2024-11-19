@@ -15,14 +15,20 @@ export default function Gift({gift}) {
             height: "160px", width: "160px",
             position: "relative",
             border: "1px solid black",
-            transition: "width .2s, height .2s",
+            transition: "box-shadow .2s",
             ...style
         }}
         onMouseEnter={() => {
-            setStyle({height:"170px", width: "170px"})
+            setStyle({boxShadow: "inset 0px 0px 5px green"})
         }}
         onMouseLeave={() => {
             setStyle({})
+        }}
+        onMouseDown={() => {
+            setStyle({backgroundColor: "lightgray"})
+        }}
+        onMouseUp={() => {
+            setStyle({backgroundColor: "white"})
         }}
         >
             <img src={image} style={{
