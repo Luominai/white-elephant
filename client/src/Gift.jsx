@@ -12,7 +12,7 @@ export default function Gift({gift}) {
         <div 
         style={{
             display: "flex", flexDirection: "column", justifyContent: "center",
-            height: "160px", width: "160px",
+            height: "120px", width: "120px",
             position: "relative",
             border: "1px solid black",
             transition: "box-shadow .2s",
@@ -37,7 +37,8 @@ export default function Gift({gift}) {
                 marginBottom: "0px"
             }}></img>
             <div style={{
-                textAlign: "center"
+                textAlign: "center",
+                fontSize: "12px"
             }}>
                 {name}
             </div>
@@ -49,14 +50,16 @@ export default function Gift({gift}) {
                 justifyContent: "space-between",
             }}>
                 <div style={{
-                    marginLeft: "5%"
+                    marginLeft: "5%",
+                    fontSize: "12px"
                 }}>
                     {gift.owner}
                 </div>
                 <div style={{
                     fontWeight: "bold", color: "green",
                     textAlign: "end",
-                    marginRight: "5%"
+                    marginRight: "5%",
+                    fontSize: "12px"
                 }}>
                     {price}
                 </div>

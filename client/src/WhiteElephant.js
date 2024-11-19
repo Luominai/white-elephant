@@ -50,7 +50,7 @@ export const WhiteElephant = {
 };
 
 function setupGifts(numPlayers) {
-    return [...Array(numPlayers)].map((_) => randomGift())
+    return [...Array(numPlayers* 5)].map((_) => randomGift())
 }
 
 function setupHands(numPlayers) {

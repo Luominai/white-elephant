@@ -2,31 +2,62 @@ import React from 'react';
 import Gift from './Gift';
 
 export function WhiteElephantBoard({ ctx, G, moves }) {
-    console.log(G.gifts)
-    G.gifts.map((gift) => console.log(gift))
     return (
         <>
         <div style={{
-            height: "100vh",
             display: "flex",
-            alignItems: "start"
+            alignItems: "flex-start",
+            height: "98vh",
+            marginTop: "2vh",
         }}>
             <div style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "5px",
-                alignItems: "center",
-                justifyContent: "center",
+                // height: "100vh",
+                width: "20px",
+                textAlign: "end",
+                marginRight: "10px"
             }}>
-                {G.gifts.map((gift, index) => {
-                    return (
-                        <div style={{cursor: "pointer"}} onClick={() => {
-                            moves.stealGift(index)
-                        }}>
-                            {Gift({gift: gift})}
-                        </div>
-                    )
+                {ctx.playOrder.map((val, index) => {
+                    if (index === ctx.playOrderPos) {
+                        return (
+                            <div style={{color: "green", fontWeight: "bold"}}>
+                                {">" + val}
+                            </div>
+                        )
+                    }
+                    else {
+                        return (
+                            <div>
+                                {val}
+                            </div>
+                        )
+                    }
                 })}
+            </div>
+            
+            <div style={{
+                // height: "100vh",
+                width: "250px",
+                display: "flex",
+                alignItems: "start",
+                overflow:"scroll"
+            }}>
+                <div style={{
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "5px",
+                    alignItems: "center",
+                    justifyContent: "center",
+                }}>
+                    {G.gifts.map((gift, index) => {
+                        return (
+                            <div style={{cursor: "pointer"}} onClick={() => {
+                                moves.stealGift(index)
+                            }}>
+                                {Gift({gift: gift})}
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         </div>
         </>
