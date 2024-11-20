@@ -1,7 +1,9 @@
 import React from 'react';
 import Gift from './Gift';
+import Card from './Card';
 
-export function WhiteElephantBoard({ ctx, G, moves }) {
+export function WhiteElephantBoard({ ctx, G, moves, playerID}) {
+    console.log(G.players, playerID)
     return (
         <>
         <div style={{
@@ -37,15 +39,16 @@ export function WhiteElephantBoard({ ctx, G, moves }) {
             <div style={{
                 display: "flex",
                 flexDirection: "column",
-                height: "100%"
+                height: "100%",
             }}>
 
                 <div style={{
-                    height: "60vh",
-                    maxWidth: "380px",
+                    height: "80vh",
+                    width: "380px",
                     border: "1px solid lightgray",
                     display: "flex",
                     alignItems: "start",
+                    justifyContent: "center",
                     overflow:"scroll"
                 }}>
                     <div style={{
@@ -60,7 +63,7 @@ export function WhiteElephantBoard({ ctx, G, moves }) {
                                 <div style={{cursor: "pointer"}} onClick={() => {
                                     moves.stealGift(index)
                                 }}>
-                                    {Gift({gift: gift})}
+                                    <Gift gift={gift}/>
                                 </div>
                             )
                         })}
@@ -70,11 +73,24 @@ export function WhiteElephantBoard({ ctx, G, moves }) {
                 <div style={{
                     display: "flex",
                     width: "100%",
-                    backgroundColor: "lightblue",
-                    marginTop: "5%", marginBottom: "5%",
-                    flexGrow: 1
+                    // backgroundColor: "lightblue",
+                    marginBottom: "5%",
+                    flexGrow: 1,
+                    overflowY: "visible"
                 }}>
-                    hello
+                    <div style={{
+                        display: "grid",
+                        gridTemplateColumns: "repeat(auto-fit,minmax(10px,max-content))",
+                        width: "50%"
+                    }}>
+                        {G.players[playerID]?.map((card) => {
+                            return (
+                                <>
+                                    <Card card={card}/>
+                                </>
+                            )
+                        })}
+                    </div>
                 </div>
             </div>
         </div>
