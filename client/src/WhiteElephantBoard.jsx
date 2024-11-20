@@ -13,7 +13,7 @@ export function WhiteElephantBoard({ ctx, G, moves }) {
             <div style={{
                 // height: "100vh",
                 width: "20px",
-                textAlign: "end",
+                textAlign: "start",
                 marginRight: "10px"
             }}>
                 {ctx.playOrder.map((val, index) => {

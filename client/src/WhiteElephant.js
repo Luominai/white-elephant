@@ -12,18 +12,18 @@ export const WhiteElephant = {
         activePlayers: {currentPlayer: "action"},
         order: TurnOrder.ONCE,
         stages: {
-            action: {
-                moves: {
-                    playCard: playCard,
-                    stealGift: stealGift
-                },
-                next: "steal"
-            },
-            steal: {
-                moves: {
-                    stealGift: stealGift
-                }
-            }
+            // action: {
+            //     moves: {
+            //         playCard: playCard,
+            //         stealGift: stealGift
+            //     },
+            //     next: "steal"
+            // },
+            // steal: {
+            //     moves: {
+            //         stealGift: stealGift
+            //     }
+            // }
         },
     },
 
@@ -50,7 +50,7 @@ export const WhiteElephant = {
 };
 
 function setupGifts(numPlayers) {
-    return [...Array(numPlayers* 5)].map((_) => randomGift())
+    return [...Array(numPlayers)].map((_) => randomGift())
 }
 
 function setupHands(numPlayers) {
@@ -61,7 +61,7 @@ function setupHands(numPlayers) {
     return output
 }
 
-function playCard({ G, playerID, events}, indexOfCard, indexOfGift = null) {
+function playCard({ G, playerID, events}, indexOfCard, indexOfGift = -1) {
     const card = G.players[playerID][indexOfCard]
     const effect = effectMap[card.name]
     effect({G: G, gift: G.gifts[indexOfGift]})
