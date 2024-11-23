@@ -12,18 +12,18 @@ export const WhiteElephant = {
         activePlayers: {currentPlayer: "action"},
         order: TurnOrder.ONCE,
         stages: {
-            // action: {
-            //     moves: {
-            //         playCard: playCard,
-            //         stealGift: stealGift
-            //     },
-            //     next: "steal"
-            // },
-            // steal: {
-            //     moves: {
-            //         stealGift: stealGift
-            //     }
-            // }
+            action: {
+                moves: {
+                    playCard: playCard,
+                    stealGift: stealGift
+                },
+                next: "steal"
+            },
+            steal: {
+                moves: {
+                    stealGift: stealGift
+                }
+            }
         },
     },
 

@@ -2,6 +2,9 @@ import { useState } from "react"
 
 export default function Card({card}) {
     const [style, setStyle] = useState({})
+    const [storedPos, setStoredPos] = useState({})
+    const [offset, setOffset] = useState({})
+    const [dragging, setDragging] = useState(false)
 
     return (
         <div
@@ -10,12 +13,23 @@ export default function Card({card}) {
         }}
         onMouseLeave={() => {
             setStyle({})
+            setDragging(false)
+        }}
+        onMouseDown={(e) => {
+            setStyle({position: "absolute", top: -30, left: 0})
+            setDragging(true)
+        }}
+        onMouseMove={(e) => {
+            if (dragging) {
+                console.log(e.movementX, e.movementY)
+                setStyle({...style, top: style.top += e.movementY, left: style.left += e.movementX})
+            }
         }}
         >   
             <div style={{
                 height: "150px",
                 width: "100px",
-                position: "relative"
+                position: "relative",
             }}>
                 <div style={{
                     height: "150px",
@@ -27,14 +41,10 @@ export default function Card({card}) {
                     position: "relative", 
                     transition: "top .2s",
                     top: "10px",
-                    ...style
+                    cursor: "pointer",
+                    ...style,
+                    ...offset
                 }}
-                // onMouseEnter={() => {
-                //     setStyle({top: "-30px"})
-                // }}
-                // onMouseLeave={() => {
-                //     setStyle({})
-                // }}
                 >
                     {card.name}
                 </div>

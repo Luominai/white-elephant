@@ -13,13 +13,13 @@ import { WhiteElephantBoard } from './WhiteElephantBoard';
 const WhiteElephantClient = Client({
     game: WhiteElephant,
     board: WhiteElephantBoard,
-    // multiplayer: Local()
+    multiplayer: Local()
 })
 
 const App = () => (
     <div>
       <WhiteElephantClient playerID="0" />
-      {/* <WhiteElephantClient playerID="1" /> */}
+      <WhiteElephantClient playerID="1" />
     </div>
   );
 
